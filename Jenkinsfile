@@ -61,9 +61,7 @@ pipeline {
         }
         stage ('Deploy Prod') {
             steps {
-                sh 'usermod -aG docker $USER'
-                sh 'docker-compose build'
-                sh 'docker-compose -d'
+                sh 'docker-compose up -d'
             }
         }
     }
