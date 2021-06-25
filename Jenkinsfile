@@ -51,5 +51,13 @@ pipeline {
                 }
             }
         }
+        stage ('Functional Test') {
+            steps {
+                dir('functional-test') {
+                    git credentialsId: 'MatheusRamos90', url: 'https://github.com/MatheusRamos90/tasks-functional-tests.git'
+                    sh 'mvn test'
+                }
+            }
+        }
     }
 }
