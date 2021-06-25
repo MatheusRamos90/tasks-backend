@@ -61,9 +61,10 @@ pipeline {
         }
         stage ('Deploy Prod') {
             steps {
-                sh 'sudo systemctl start docker'
-                sh 'sudo docker-compose build'
-                sh 'sudo docker-compose up -d'
+                sh 'sudo groupadd docker'
+                sh 'sudo usermod -aG docker $USER'
+                sh 'sudo docker-compose docker-compose.yml build'
+                sh 'sudo docker-compose docker-compose.yml up -d'
             }
         }
     }
