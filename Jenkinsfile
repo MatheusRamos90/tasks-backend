@@ -61,7 +61,6 @@ pipeline {
         }
         stage ('Deploy Prod') {
             steps {
-                sh 'groupadd docker'
                 sh 'usermod -aG docker $USER'
                 sh 'docker-compose build'
                 sh 'docker-compose -d'
