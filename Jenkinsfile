@@ -61,9 +61,10 @@ pipeline {
         }
         stage ('Deploy Prod') {
             steps {
-                sh 'sudo usermod -a -G docker $USER'
-                sh 'sudo systemctl enable docker'
-                sh 'sudo systemctl start docker'
+                sh 'usermod -a -G docker $USER'
+                sh 'systemctl enable docker'
+                sh 'systemctl start docker'
+                sh 'docker-compose build'
                 sh 'docker-compose up -d'
             }
         }
