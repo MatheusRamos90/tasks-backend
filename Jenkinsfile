@@ -61,9 +61,6 @@ pipeline {
         }
         stage ('Deploy Prod') {
             steps {
-                sh 'sudo su -'
-                sh 'usermod -a -G sudo ${USER}'
-                sh 'service docker start'
                 sh 'docker-compose build'
                 sh 'docker-compose up -d'
             }
